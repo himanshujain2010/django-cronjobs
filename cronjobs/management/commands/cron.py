@@ -30,7 +30,10 @@ class Command(BaseCommand):
                 continue
 
             try:
-                imp.find_module('cron', app_path)
+                if type(app_path) is list:
+                    find_module('cron', app_path)
+                else:
+                    continue
             except ImportError as e:
                 continue
 
